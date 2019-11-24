@@ -10,6 +10,8 @@ import UIKit
 
 class ChannelVC: UIViewController {
 
+    @IBOutlet weak var loginBttn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width-60
@@ -17,6 +19,9 @@ class ChannelVC: UIViewController {
         self.revealViewController()?.frontViewShadowOpacity = 0.5
         
     }
-  
+    @IBAction func loginBttnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "to_login", sender: nil)
+    }
+    
 
 }
