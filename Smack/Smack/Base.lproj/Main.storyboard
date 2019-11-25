@@ -210,19 +210,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeB-Ny-Wgp">
-                                <rect key="frame" x="175" y="413.5" width="64" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeB-Ny-Wgp" customClass="cornerButton" customModule="Smack" customModuleProvider="target">
+                                <rect key="frame" x="107" y="413.5" width="200" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.82745098039999998" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="IdW-ws-5bA"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="KzA-oE-LZg"/>
+                                    <constraint firstAttribute="width" constant="200" id="31R-Nf-iN7"/>
+                                    <constraint firstAttribute="height" constant="48" id="Gci-ts-lci"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                 <state key="normal" title="Log In">
-                                    <color key="titleColor" red="1" green="0.82745098039999998" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8p-HG-iAd">
-                                <rect key="frame" x="148.5" y="466.5" width="117" height="26"/>
+                                <rect key="frame" x="148.5" y="471.5" width="117" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="Ft3-hL-081"/>
                                     <constraint firstAttribute="height" constant="26" id="Wt1-vu-TRC"/>
@@ -274,7 +280,7 @@
                         <constraints>
                             <constraint firstItem="wUC-4G-GYf" firstAttribute="top" secondItem="Vzg-1c-3Z9" secondAttribute="top" constant="14" id="3sx-rs-uZS"/>
                             <constraint firstItem="hg6-su-vmB" firstAttribute="top" secondItem="FiG-Jo-wbI" secondAttribute="bottom" constant="15" id="7FK-ci-llf"/>
-                            <constraint firstItem="eeB-Ny-Wgp" firstAttribute="centerX" secondItem="DId-XL-gQh" secondAttribute="centerX" id="IxV-iC-hOn"/>
+                            <constraint firstItem="eeB-Ny-Wgp" firstAttribute="centerX" secondItem="DId-XL-gQh" secondAttribute="centerX" id="C9i-zz-uK9"/>
                             <constraint firstItem="Y8p-HG-iAd" firstAttribute="centerX" secondItem="DId-XL-gQh" secondAttribute="centerX" id="Lyp-6z-Ga6"/>
                             <constraint firstItem="Vzg-1c-3Z9" firstAttribute="trailing" secondItem="hg6-su-vmB" secondAttribute="trailing" constant="50" id="Tvv-Ok-Qgd"/>
                             <constraint firstItem="hg6-su-vmB" firstAttribute="leading" secondItem="Vzg-1c-3Z9" secondAttribute="leading" constant="50" id="VO9-8O-0qE"/>
@@ -367,13 +373,9 @@
                                 <state key="normal" title="Change Background Color">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NL0-Vg-NFT">
-                                <rect key="frame" x="124" y="784" width="166" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="e3e-dU-j6b"/>
-                                </constraints>
-                                <state key="normal" image="createUser"/>
+                                <connections>
+                                    <action selector="changeBGColorPressed:" destination="IiF-2l-aR0" eventType="touchUpInside" id="UBA-8N-SXa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaR-TL-FaO">
                                 <rect key="frame" x="146.5" y="532" width="121" height="37"/>
@@ -381,30 +383,59 @@
                                 <state key="normal" title="Choose Avatar">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeAvatarPressed:" destination="IiF-2l-aR0" eventType="touchUpInside" id="c4O-MF-Xam"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrM-kC-ue1" customClass="cornerButton" customModule="Smack" customModuleProvider="target">
+                                <rect key="frame" x="107" y="779" width="200" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.82745098039999998" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="NLx-Ak-bIW"/>
+                                    <constraint firstAttribute="height" constant="48" id="X5z-7T-xus"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="rYM-zK-hQN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="rdV-B7-v2Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Create User">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createUserPressed:" destination="IiF-2l-aR0" eventType="touchUpInside" id="uLP-Qg-Stl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PC9-fi-2rB" firstAttribute="trailing" secondItem="3KD-1G-DmK" secondAttribute="trailing" constant="12" id="2IR-2m-SgL"/>
-                            <constraint firstItem="PC9-fi-2rB" firstAttribute="bottom" secondItem="NL0-Vg-NFT" secondAttribute="bottom" constant="30" id="2vv-tp-hdu"/>
                             <constraint firstItem="jtQ-yX-fye" firstAttribute="top" secondItem="PC9-fi-2rB" secondAttribute="top" constant="44" id="3rn-0b-jwR"/>
                             <constraint firstItem="6Dv-XJ-U7b" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="7v9-SX-MhI"/>
                             <constraint firstItem="OSc-sg-Lg9" firstAttribute="top" secondItem="KaR-TL-FaO" secondAttribute="bottom" constant="0.5" id="9Ss-7d-geG"/>
                             <constraint firstItem="6Dv-XJ-U7b" firstAttribute="leading" secondItem="PC9-fi-2rB" secondAttribute="leading" constant="50" id="CtV-Pt-waI"/>
+                            <constraint firstItem="LrM-kC-ue1" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="Hmo-h2-ha2"/>
                             <constraint firstItem="OSc-sg-Lg9" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="JM9-hI-M86"/>
                             <constraint firstItem="jtQ-yX-fye" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="OJd-YX-4TQ"/>
                             <constraint firstItem="KaR-TL-FaO" firstAttribute="top" secondItem="cBa-Pi-uiC" secondAttribute="bottom" constant="16" id="VQU-wo-TLy"/>
                             <constraint firstItem="cBa-Pi-uiC" firstAttribute="top" secondItem="6Dv-XJ-U7b" secondAttribute="bottom" constant="62" id="XTo-2g-pMw"/>
+                            <constraint firstItem="LrM-kC-ue1" firstAttribute="top" secondItem="OSc-sg-Lg9" secondAttribute="bottom" constant="173.5" id="bjg-2B-3vX"/>
                             <constraint firstItem="3KD-1G-DmK" firstAttribute="top" secondItem="PC9-fi-2rB" secondAttribute="top" constant="4" id="cvO-h7-gpi"/>
                             <constraint firstItem="cBa-Pi-uiC" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="hoD-8T-Utv"/>
                             <constraint firstItem="PC9-fi-2rB" firstAttribute="trailing" secondItem="6Dv-XJ-U7b" secondAttribute="trailing" constant="50" id="lVj-0C-Xfj"/>
-                            <constraint firstItem="NL0-Vg-NFT" firstAttribute="leading" secondItem="PC9-fi-2rB" secondAttribute="leading" constant="124" id="qJc-55-eJ6"/>
-                            <constraint firstItem="PC9-fi-2rB" firstAttribute="trailing" secondItem="NL0-Vg-NFT" secondAttribute="trailing" constant="124" id="vTJ-7r-7Rz"/>
                             <constraint firstItem="6Dv-XJ-U7b" firstAttribute="top" secondItem="jtQ-yX-fye" secondAttribute="bottom" constant="70" id="xuO-xv-cgL"/>
                             <constraint firstItem="KaR-TL-FaO" firstAttribute="centerX" secondItem="Cr1-oO-eug" secondAttribute="centerX" id="zLU-nP-bjW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PC9-fi-2rB"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTxt" destination="ahe-eR-EiE" id="LSr-Kd-eBX"/>
+                        <outlet property="passwordTxt" destination="JzY-bb-ItN" id="B1q-M0-83o"/>
+                        <outlet property="usernameTxt" destination="PC9-Rh-W5O" id="EKg-fr-NqV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkT-La-Wgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -413,7 +444,6 @@
     </scenes>
     <resources>
         <image name="addChannelButton" width="22" height="22"/>
-        <image name="createUser" width="166" height="48"/>
         <image name="menuProfileIcon" width="99" height="99"/>
         <image name="noun_Close_437150" width="700" height="700"/>
         <image name="profileDefault" width="192" height="192"/>
