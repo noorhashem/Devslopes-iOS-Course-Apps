@@ -14,6 +14,9 @@ class CreateUserVC: UIViewController {
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     
+    var avatarName = "profileDefault"
+    var avatarColor = "[0.5,0.5,0.5,1]"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,14 +42,30 @@ class CreateUserVC: UIViewController {
             return
         }
         
-        AuthService.instance.registerAccount(email: email, password: password) { (success) in
+        guard let username = usernameTxt.text, usernameTxt.text != "" else {
+            return
+        }
+        
+        AuthService.instance.registerAccount(email: email, password: password, completion: { (success) in
             if success {
                 AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
-                    print("User Registered & logged in Successfully" + "       " + AuthService.instance.authToken)
+                    if success {
+                        print("Account Registered & logged in Successfully")
+                        AuthService.instance.createUser(name: "potato", email: "potato@hotmail.com", avatarName: self.avatarName, avatarColor: self.avatarColor) { (success) in
+                            if success {
+                                print(DataService.instance.name + "is registered with id")
+                                //self.performSegue(withIdentifier: "UNWIND", sender: nil)
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                   
                 })
                 
             }
-        }
+        })
         
         //TODO: MOVE BACK TO CHANNELS WITH LOGGED IN STATUS 
     }

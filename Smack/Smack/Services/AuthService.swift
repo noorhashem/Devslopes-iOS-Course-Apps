@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class AuthService {
     
@@ -27,13 +28,6 @@ class AuthService {
     var authToken : String {
         get{
             return defaults.value(forKey: TOKEN_KEY) as! String
-            
-//            if let token = defaults.value(forKey: TOKEN_KEY) {
-//                 return token as! String
-//            } else{
-//                return "nill tokken"
-//            }
-           
         }
         
         set {
@@ -97,9 +91,54 @@ class AuthService {
             }
         })
         
-        
-        
     }
     
+    func createUser(name:String, email: String, avatarName:String, avatarColor:String, completion: @escaping CompletionHandler){
+        let lowerCaseEmail = email.lowercased()
+        let header = [
+            "Authorization":"Bearer \(AuthService.instance.authToken)",
+            "Content-Type":"application/json; charset=utf-8"
+        ]
+        let body = [
+            "name" : name,
+            "email" : lowerCaseEmail,
+            "avatarName" : avatarName,
+            "avatarColor" : avatarColor
+
+        ]
+
+
+         Alamofire.request(CREATE_USER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: {
+            (response) in
+            if response.result.error == nil {
+                guard let jsonObj = response.data else { return }
+
+                if let json = try? JSON(data: jsonObj){
+
+                    let id = json["_id"].stringValue
+                    print(id)
+                    let color = json["avatarColor"].stringValue
+                    print(color)
+                    let avatarName = json["avatarName"].stringValue
+                    print(avatarName)
+                    let email = json["email"].stringValue
+                    print(email)
+                    let name = json["name"].stringValue
+                    print(name)
+                    DataService.instance.setUserData(id: id, name: name, email: email, color: color , avatarName: avatarName)
+                    completion(true)
+
+                }
+
+
+            }
+            else {
+                print("I'm false")
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+
+        })
+    }
 
 }

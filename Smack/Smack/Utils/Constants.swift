@@ -20,8 +20,9 @@ typealias CompletionHandler = (_ Success: Bool)->()
 
 //URLs
 let BASE_URL = "https://smacky-smack-app.herokuapp.com/v1/"
-let REGISTER_USER = "\(BASE_URL)/account/register"
-let LOG_USER = "\(BASE_URL)/account/login"
+let REGISTER_USER = "\(BASE_URL)account/register"
+let LOG_USER = "\(BASE_URL)account/login"
+let CREATE_USER = "\(BASE_URL)user/add"
 
 //HEADERS
 
